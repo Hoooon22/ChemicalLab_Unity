@@ -22,6 +22,15 @@ public class CamRotate : MonoBehaviour
 
     void Update()
     {
-        
+        // 1. get mouse input
+        float x = Input.GetAxis(" Mouse X ");
+        float y = Input.GetAxis(" Mouse Y ");
+
+        // 2. accumulate rotation value for each attribute to put it in moblie formula
+        angle.x += x * sensitivity * Time.deltaTime;
+        angle.y += y * sensitivity * Time.deltaTime;
+
+        // 3. allocate new rotate value to camera rotate value
+        transform.eulerAngles = new Vector3(-angle.y, angle.x, transform.eulerAngles.z);
     }
 }
