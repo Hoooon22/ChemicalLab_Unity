@@ -18,9 +18,20 @@ public class Voxel : MonoBehaviour
         rb.velocity = direction * speed;
     }
 
+    // after scheduled time, destroy voxel
+
+    // time for destroy voxel
+    public float destroyTime = 3.0f;
+    float currentTime;
     void Update()
     {
-        // after scheduled time, delete voxel
-        
+        // 1. a few moment later
+        currentTime = Time.deltaTime;
+        // 2. time to destroy
+        if (currentTime > destroyTime)
+        {
+            // destroy voxel
+            Destroy(gameObject);
+        }
     }
 }
