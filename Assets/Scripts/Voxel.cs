@@ -20,6 +20,7 @@ public class Voxel : MonoBehaviour
 
     void Update()
     {
+        // after scheduled time, delete voxel
         
     }
 }
