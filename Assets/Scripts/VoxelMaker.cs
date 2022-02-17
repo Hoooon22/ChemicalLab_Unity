@@ -1,5 +1,3 @@
-//  사용자가 마우스를 클릭한 지점에 복셀 생성
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +11,18 @@ public class VoxelMaker : MonoBehaviour
     {
         // 1. if click mouse
         if (Input.GetButton("Fire1"))
-        {
+        { 
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitInfo = new RaycastHit();
 
+            // 2. if mouse locates on the floor
+            if (Physics.Raycast(ray, out hitInfo))
+            {
+                // 3. make voxel from voxelmaker
+                GameObject voxel = Instantiate(voxelFactory);
+                // 4. place voxel
+                voxel.transform.position = hitInfo.point;
+            }
         }
     }
 }
