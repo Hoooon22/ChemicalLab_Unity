@@ -6,6 +6,11 @@ public class VoxelMaker : MonoBehaviour
 {
     // voxel factory
     public GameObject voxelFactory;
+    // size of object pool
+    public int voxelPoolSize = 20;
+    // object pool
+    public static List<GameObject> voxelPool = new List<GameObject>();
+
 
     void Update()
     {
