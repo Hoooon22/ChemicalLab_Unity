@@ -11,6 +11,10 @@ public class VoxelMaker : MonoBehaviour
     // object pool
     public static List<GameObject> voxelPool = new List<GameObject>();
 
+    void Start()
+    {
+        // input 
+    }
 
     void Update()
     {
