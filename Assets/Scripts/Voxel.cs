@@ -1,4 +1,4 @@
-// 복셀이 랜덤한 방향으로 날아가는 운동을 한다
+// ?????? ?????? ???????? ???????? ?????? ????
 
 using System.Collections;
 using System.Collections.Generic;
@@ -8,9 +8,19 @@ public class Voxel : MonoBehaviour
 {
     // 1. voxel's speed
     public float speed = 5;
-
-    void Start()
+    /*
+     void Start()
+     
+         // 2. find random
+         Vector3 direction = Random.insideUnitSphere;
+         // 3. set random speed
+         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+         rb.velocity = direction * speed;
+     }
+    */
+    void OnEnable()
     {
+        currentTime = 0;
         // 2. find random
         Vector3 direction = Random.insideUnitSphere;
         // 3. set random speed
@@ -30,8 +40,14 @@ public class Voxel : MonoBehaviour
         // 2. time to destroy
         if (currentTime > destroyTime)
         {
-            // destroy voxel
-            Destroy(gameObject);
+            /*
+             // destroy voxel
+             Destroy(gameObject);
+            */
+            // 3. inactive voxel
+            gameObject.SetActive(false);
+            // 4. reput into object pool
+            VoxelMaker.voxelPool.Add(gameObject);
         }
     }
 }
